@@ -37,7 +37,7 @@ $(document).ready(function(){
 
   });
 
-  $('h1').text('Modified by jQuery');
+  $('h1').text('Modified by jQuery').css('color', 'red').slideUp(2000).slideDown(2000);
 
   $('#name').keyup(function(e){
     debugger
@@ -66,11 +66,16 @@ $(document).ready(function(){
     // Get value of text input
 
     var userInput = $('#user_input').val().trim();
-
+    if(userInput.length) {
     // Append new list item with text input value
     $('#users_list').append('<li>' + userInput + '</li>');
     $('#user_input').val('');
+    } else { 
+      alert('blank input not allowed!!!!')
+    }
   });
 
-  users_list
+  $('#clear_list_button').click(function(){
+    $('#users_list').empty();
+  });
 });
